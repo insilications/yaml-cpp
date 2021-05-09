@@ -4,14 +4,13 @@
 #
 %define keepstatic 1
 Name     : yaml-cpp
-Version  : 0.6.3
+Version  : 0.6.2
 Release  : 31
-URL      : file:///aot/build/clearlinux/packages/yaml-cpp/yaml-cpp-0.6.3.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/yaml-cpp/yaml-cpp-0.6.3.tar.gz
-Summary  : A YAML parser and emitter for C++
+URL      : https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.6.2.tar.gz
+Source0  : https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.6.2.tar.gz
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: yaml-cpp-data = %{version}-%{release}
 Requires: yaml-cpp-lib = %{version}-%{release}
 BuildRequires : Z3-dev
 BuildRequires : Z3-staticdev
@@ -51,19 +50,10 @@ BuildRequires : zlib-staticdev
 %description
 # yaml-cpp [![Build Status](https://travis-ci.org/jbeder/yaml-cpp.svg?branch=master)](https://travis-ci.org/jbeder/yaml-cpp) [![Documentation](https://codedocs.xyz/jbeder/yaml-cpp.svg)](https://codedocs.xyz/jbeder/yaml-cpp/)
 
-%package data
-Summary: data components for the yaml-cpp package.
-Group: Data
-
-%description data
-data components for the yaml-cpp package.
-
-
 %package dev
 Summary: dev components for the yaml-cpp package.
 Group: Development
 Requires: yaml-cpp-lib = %{version}-%{release}
-Requires: yaml-cpp-data = %{version}-%{release}
 Provides: yaml-cpp-devel = %{version}-%{release}
 Requires: yaml-cpp = %{version}-%{release}
 
@@ -74,24 +64,14 @@ dev components for the yaml-cpp package.
 %package lib
 Summary: lib components for the yaml-cpp package.
 Group: Libraries
-Requires: yaml-cpp-data = %{version}-%{release}
 
 %description lib
 lib components for the yaml-cpp package.
 
 
-%package staticdev
-Summary: staticdev components for the yaml-cpp package.
-Group: Default
-Requires: yaml-cpp-dev = %{version}-%{release}
-
-%description staticdev
-staticdev components for the yaml-cpp package.
-
-
 %prep
-%setup -q -n yaml-cpp
-cd %{_builddir}/yaml-cpp
+%setup -q -n yaml-cpp-yaml-cpp-0.6.2
+cd %{_builddir}/yaml-cpp-yaml-cpp-0.6.2
 
 %build
 unset http_proxy
@@ -99,7 +79,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620551724
+export SOURCE_DATE_EPOCH=1620552360
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -274,7 +254,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620551724
+export SOURCE_DATE_EPOCH=1620552360
 rm -rf %{buildroot}
 pushd clr-build-special
 %make_install_special  || :
@@ -345,17 +325,12 @@ rm -f %{buildroot}/usr/share/package-licenses/yaml-cpp/test_gtest-1.8.0_googlete
 %files
 %defattr(-,root,root,-)
 
-%files data
-%defattr(-,root,root,-)
-/usr/share/cmake/*
-
 %files dev
 %defattr(-,root,root,-)
 /usr/include/yaml-cpp/anchor.h
 /usr/include/yaml-cpp/binary.h
 /usr/include/yaml-cpp/contrib/anchordict.h
 /usr/include/yaml-cpp/contrib/graphbuilder.h
-/usr/include/yaml-cpp/depthguard.h
 /usr/include/yaml-cpp/dll.h
 /usr/include/yaml-cpp/emitfromevents.h
 /usr/include/yaml-cpp/emitter.h
@@ -366,6 +341,7 @@ rm -f %{buildroot}/usr/share/package-licenses/yaml-cpp/test_gtest-1.8.0_googlete
 /usr/include/yaml-cpp/exceptions.h
 /usr/include/yaml-cpp/mark.h
 /usr/include/yaml-cpp/node/convert.h
+/usr/include/yaml-cpp/node/detail/bool_type.h
 /usr/include/yaml-cpp/node/detail/impl.h
 /usr/include/yaml-cpp/node/detail/iterator.h
 /usr/include/yaml-cpp/node/detail/iterator_fwd.h
@@ -381,21 +357,21 @@ rm -f %{buildroot}/usr/share/package-licenses/yaml-cpp/test_gtest-1.8.0_googlete
 /usr/include/yaml-cpp/node/parse.h
 /usr/include/yaml-cpp/node/ptr.h
 /usr/include/yaml-cpp/node/type.h
-/usr/include/yaml-cpp/noexcept.h
+/usr/include/yaml-cpp/noncopyable.h
 /usr/include/yaml-cpp/null.h
 /usr/include/yaml-cpp/ostream_wrapper.h
 /usr/include/yaml-cpp/parser.h
 /usr/include/yaml-cpp/stlemitter.h
 /usr/include/yaml-cpp/traits.h
 /usr/include/yaml-cpp/yaml.h
+/usr/lib64/cmake/yaml-cpp/yaml-cpp-config-version.cmake
+/usr/lib64/cmake/yaml-cpp/yaml-cpp-config.cmake
+/usr/lib64/cmake/yaml-cpp/yaml-cpp-targets-release.cmake
+/usr/lib64/cmake/yaml-cpp/yaml-cpp-targets.cmake
 /usr/lib64/libyaml-cpp.so
 /usr/lib64/pkgconfig/yaml-cpp.pc
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libyaml-cpp.so.0.6
-/usr/lib64/libyaml-cpp.so.0.6.3
-
-%files staticdev
-%defattr(-,root,root,-)
-/usr/lib64/libyaml-cpp.a
+/usr/lib64/libyaml-cpp.so.0.6.2
