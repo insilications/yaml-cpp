@@ -1,5 +1,6 @@
 PKG_NAME := yaml-cpp
-URL = https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.6.2.tar.gz
+URL = https://github.com/jbeder/yaml-cpp.git
 ARCHIVES = 
+ARCHIVES_GIT = 
 
 include ../common/Makefile.common
