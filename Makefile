@@ -1,5 +1,5 @@
 PKG_NAME := yaml-cpp
-URL = https://github.com/jbeder/yaml-cpp.git
+URL = https://github.com/insilications/yaml-cpp-clr.git
 ARCHIVES = 
 ARCHIVES_GIT = 
 

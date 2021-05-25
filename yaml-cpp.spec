@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : yaml-cpp
-Version  : 0.6.3
-Release  : 31
-URL      : file:///aot/build/clearlinux/packages/yaml-cpp/yaml-cpp-v0.6.3.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/yaml-cpp/yaml-cpp-v0.6.3.tar.gz
+Version  : 6.0.3
+Release  : 32
+URL      : file:///aot/build/clearlinux/packages/yaml-cpp/yaml-cpp-v6.0.3.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/yaml-cpp/yaml-cpp-v6.0.3.tar.gz
 Summary  : A YAML parser and emitter for C++
 Group    : Development/Tools
 License  : GPL-2.0
@@ -99,7 +99,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621961609
+export SOURCE_DATE_EPOCH=1621970548
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -182,7 +182,7 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DBUILD_SHARED_LIBS:BOOL=OFF \
 -DYAML_CPP_BUILD_CONTRIB:BOOL=ON \
 -DYAML_CPP_BUILD_TOOLS:BOOL=ON \
--DYAML_CPP_BUILD_TESTS:BOOL=Off
+-DYAML_CPP_BUILD_TESTS:BOOL=OFF
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
 fi
 popd
@@ -274,7 +274,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1621961609
+export SOURCE_DATE_EPOCH=1621970548
 rm -rf %{buildroot}
 pushd clr-build-special
 %make_install_special  || :
