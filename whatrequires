@@ -1,2 +1,4 @@
 # This file contains recursive sources that require this package
 blender
+yaml-cpp-dev
+yaml-cpp-staticdev
