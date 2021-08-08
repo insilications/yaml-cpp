@@ -1,0 +1,25 @@
+From 6827834fa52b559f88de4154cd31fef932529e8c Mon Sep 17 00:00:00 2001
+From: Francisco Boni <boboniboni@gmail.com>
+Date: Tue, 25 May 2021 16:13:35 -0300
+Subject: [PATCH] Fix cmake module YAML_CPP_INCLUDE_DIR
+
+---
+ yaml-cpp-config.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/yaml-cpp-config.cmake.in b/yaml-cpp-config.cmake.in
+index 7b41e3f..c21bea1 100644
+--- a/yaml-cpp-config.cmake.in
++++ b/yaml-cpp-config.cmake.in
+@@ -5,7 +5,7 @@
+ 
+ # Compute paths
+ get_filename_component(YAML_CPP_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+-set(YAML_CPP_INCLUDE_DIR "@CONFIG_INCLUDE_DIRS@")
++set(YAML_CPP_INCLUDE_DIR "/usr/include/yaml-cpp/")
+ 
+ # Our library dependencies (contains definitions for IMPORTED targets)
+ include("${YAML_CPP_CMAKE_DIR}/yaml-cpp-targets.cmake")
+-- 
+2.32.0
+
